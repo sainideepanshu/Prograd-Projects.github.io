@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          background-image: url('https://c1.wallpaperflare.com/preview/1021/342/434/dice-game-random-good-luck.jpg');
+          text-align: center;
+          font-size: x-large;
+          margin: 100px auto;
+        }
+        input{
+          text-align: center;
+          font-size: x-large;
+          border-radius: 20px;
+        }
+        button {
+            text-align: center;
+            font-size: x-large;
+            border-radius: 20px;
+            border: none;
+            padding-top: 7px;
+            padding-bottom: 7px;
+            padding-left: 30px;
+            padding-right: 30px;
+            margin-left: 70px;
+            background: rgb(234, 238, 13);
+        }
+        #heading {
+            font-size: 70px;
+            margin-left: 150px;
+        }
+    </style>
+</head>
+<body>
+    <p id="heading">GAME  OF  DICE</p>
+    <br>
+    <p>Player 1 : <input id="in_one" type = "number" ></p>
+    <br>
+    <p>Player 2 : <input id="in_two" type = "number"></p>
+    <br>
+    <button onclick="findNumber()">ROLL</button>
+
+    <script>
+        
+        var player_chance=1;
+        var player_one=0,player_two=0;
+        function findNumber()
+        {
+            var guess = Math.floor((Math.random()*6)+1);
+            var num = parseInt(guess); 
+            if(player_chance%2===0) {
+                window.alert("Player 2 roll value : "+guess);
+                player_two = player_two + guess;
+                if(player_two>=50) {
+                    window.alert("Player 2 target reached");
+                    document.getElementById("in_one").value="";
+                    document.getElementById("in_two").value="";
+                    player_chance = 0;
+                    player_one = 0;
+                    player_two = 0;
+                }
+                else {
+                    document.getElementById("in_two").value= player_two;
+                }
+            }   
+            else {
+                window.alert("Player 1 roll value : "+guess);
+                player_one = player_one + guess;
+                if(player_one>=50) {
+                    window.alert("Player 1 target reached");
+                    document.getElementById("in_one").value="";
+                    document.getElementById("in_two").value="";
+                    player_chance = 0;
+                    player_one = 0;
+                    player_two = 0;
+                }
+                else {
+                    document.getElementById("in_one").value= player_one;
+                }
+            } 
+                
+            player_chance = player_chance+1;
+            
+        }
+        
+    </script>
+</body>
+</html>
